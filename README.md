@@ -1,0 +1,1 @@
+A simple todo app built by using nextjs and postgres

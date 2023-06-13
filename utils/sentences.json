@@ -1,0 +1,16 @@
+{
+  "projects":{
+    "getProjects": "SELECT * FROM public.project;",
+    "getProjectById":"SELECT project_id, user_id, project_title_de, project_de  FROM public.project WHERE project_id=$1;",
+    "setProject":"INSERT INTO public.project(user_id, project_title_de, project_de) VALUES ( $1, $2, $3)",
+    "updateProject":"UPDATE public.project SET project_title_de=$1, project_de=$2 WHERE project_id=$3;",
+    "deleteProject":"DELETE FROM public.project WHERE project_id=$1;"
+  },
+  "tasks":{
+    "getTasks":"SELECT * FROM public.task;",
+    "getTaskById":"SELECT task_id AS id, t.project_id AS value, task_title_de AS title, task_de AS description, project_title_de AS option FROM public.task t INNER JOIN public.project p ON t.project_id = p.project_id WHERE task_id = $1;",
+    "setTask":"INSERT INTO public.task( project_id, task_title_de, task_de) VALUES ($1, $2, $3);",
+    "updateTask":"UPDATE public.task SET project_id=$1, task_title_de=$2, task_de=$3 WHERE task_id = $4;",
+    "deleteTask":"DELETE FROM public.task WHERE task_id = $1"
+  }
+}
